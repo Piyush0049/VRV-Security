@@ -48,7 +48,7 @@ function RoleManagement() {
                   : "bg-indigo-600 text-gray-100 hover:bg-indigo-700"
               }`}
             >
-              <FaPlus className="inline mr-2" />
+              <FaPlus className="inline" />
               <span className="hidden lg:block">Add</span>
             </button>
           </div>

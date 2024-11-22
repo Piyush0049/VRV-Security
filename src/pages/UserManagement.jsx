@@ -91,7 +91,7 @@ function UserManagement() {
   };
 
   return (
-    <div className={`${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-800"} h-screen flex pt-16 overflow-auto justify-end w-full md:w-5/6`}>+
+    <div className={`${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-800"} h-screen flex pt-16 overflow-auto justify-end w-full md:w-5/6`}>
       <div className="flex-1 flex flex-col overflow-hidden">
         <header
           className={`h-16 flex items-center px-6 justify-between shadow-md ${darkMode ? "bg-gray-900 text-gray-200" : "bg-gray-100 text-gray-800"
@@ -117,8 +117,10 @@ function UserManagement() {
             </div>
             <div className={`${darkMode ? "bg-gray-900" : "bg-white"} p-6 rounded-lg shadow-sm`}>
               <h3 className="text-lg font-semibold mb-4">User Roles Distribution</h3>
-              <div style={{ width: "80%", height: "80%" }}>
+              <div className="w-full flex justify-center">
+              <div style={{ width: "70%", height: "70%" }}>
                 <Doughnut data={doughnutData} options={{ responsive: true }} />
+              </div>
               </div>
             </div>
           </div>
@@ -141,7 +143,7 @@ function UserManagement() {
                     <td className="px-2 sm:px-6 py-4">
                       <button
                         onClick={() => handleStatusChange(user.id, user.status === "Active" ? "Inactive" : "Active")}
-                        className={`text-sm px-3 py-1 rounded-full font-semibold ${user.status === "active" ? "bg-green-500" : "bg-red-500"} text-white`}
+                        className={`text-sm px-3 py-1 rounded-full ${user.status === "active" ? "bg-green-500" : "bg-red-500"} text-white`}
                       >
                         {user.status}
                       </button>

@@ -35,14 +35,14 @@ function Modal({ closeModal }) {
           darkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-800"
         }`}
       >
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center gap-2 mb-6">
           <h3
             className={`text-2xl font-semibold flex items-center ${
               darkMode ? "text-gray-100" : "text-gray-800"
             }`}
           >
             <FaUserPlus
-              className={`mr-2 ${
+              className={`${
                 darkMode ? "text-indigo-400" : "text-indigo-600"
               }`}
             />
