@@ -9,7 +9,7 @@ import {
   Legend
 } from 'chart.js';
 import { Bar, Line } from "react-chartjs-2";
-import { FaEllipsisH} from "react-icons/fa";
+import { FaEllipsisH } from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
 import { useSelector } from "react-redux";
 
@@ -116,30 +116,36 @@ const Dashboard = () => {
                   }`}
               >
                 <tr>
-                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left font-xs sm:font-sm border-b-4">Username</th>
-                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left font-xs sm:font-sm border-b-4">Role</th>
-                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left font-xs sm:font-sm border-b-4">Status</th>
-                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left font-xs sm:font-sm border-b-4">Created</th>
-                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left font-xs sm:font-sm border-b-4">Actions</th>
+                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left border-b-4">Username</th>
+                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left border-b-4">Role</th>
+                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left border-b-4">Status</th>
+                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left border-b-4">Created</th>
+                  <th className="px-2 sm:px-6 py-2 sm:py-4 text-left border-b-4">Actions</th>
                 </tr>
               </thead>
-              <tbody>
-                {users.map((user=>(
-                  <tr className={`transition duration-200 ${darkMode
-                    ? "hover:bg-gray-700 border-b border-gray-600"
-                    : "hover:bg-gray-50 border-b-4 border-gray-50"
-                  }`}>
-                  <td className="px-2 sm:px-6 py-2 sm:py-4">{user.name}</td>
-                  <td className="px-2 sm:px-6 py-2 sm:py-4">{user.role}</td>
-                  <td className="px-2 sm:px-6 py-2 sm:py-4 text-green-500 font-semibold">{user.status}</td>
-                  <td className="px-2 sm:px-6 py-2 sm:py-4">{user.created}</td>
-                  <td className="px-2 sm:px-6 py-2 sm:py-4">
-                    <button className="text-indigo-600 hover:text-indigo-800 transition duration-200">
-                      <FaEllipsisH />
-                    </button>
+              <tbody >
+                {users.length == 0 ? (
+                  <td colSpan="4" className="text-center py-6 text-sm sm:text-base font-semibold text-gray-500">
+                    No Users Available
                   </td>
-                </tr>
-                )))}
+                ) : (
+                  users.map((user => (
+                    <tr className={`transition duration-200 ${darkMode
+                      ? "hover:bg-gray-700 border-b border-gray-600"
+                      : "hover:bg-gray-50 border-b-4 border-gray-50"
+                      }`}>
+                      <td className="px-2 sm:px-6 py-2 sm:py-4">{user.name}</td>
+                      <td className="px-2 sm:px-6 py-2 sm:py-4">{user.role}</td>
+                      <td className="px-2 sm:px-6 py-2 sm:py-4 text-green-500 font-semibold">{user.status}</td>
+                      <td className="px-2 sm:px-6 py-2 sm:py-4">{user.created}</td>
+                      <td className="px-2 sm:px-6 py-2 sm:py-4">
+                        <button className="text-indigo-600 hover:text-indigo-800 transition duration-200">
+                          <FaEllipsisH />
+                        </button>
+                      </td>
+                    </tr>
+                  )))
+                )}
               </tbody>
             </table>
           </div>

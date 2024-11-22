@@ -21,7 +21,7 @@ const Header = () => {
               <BsFillMoonStarsFill className="text-xl" />
             )}
           </button>
-          <button className="text-gray-700 font-medium py-2 px-4 rounded-md hover:bg-indigo-700 dark:text-gray-100 hover:text-gray-100 transition duration-200 flex items-center space-x-2">
+          <button className="text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 dark:text-gray-100 hover:text-gray-100 transition duration-200 flex items-center space-x-2">
             <AiOutlineLogout className="text-base lg:text-lg" />
             <span className="text-sm lg:text-base" >Logout</span>
           </button>

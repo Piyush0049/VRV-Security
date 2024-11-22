@@ -78,41 +78,50 @@ function RoleManagement() {
                 </tr>
               </thead>
               <tbody>
-                {roles.map((role) => (
-                  <tr
-                    key={role.id}
-                    className={`transition duration-200 ${
-                      darkMode
-                        ? "hover:bg-gray-700 border-b border-gray-600"
-                        : "hover:bg-gray-50 border-b-4 border-gray-50"
-                    }`}
-                  >
-                    <td className="px-3 sm:px-6 py-4">{role.role}</td>
-                    <td className="px-3 sm:px-6 py-4">{role.permissions}</td>
-                    <td className="px-3 sm:px-6 py-4 flex space-x-4">
-                      <button
-                        onClick={() => handleEditRole(role)}
-                        className={`transition duration-200 ${
-                          darkMode
-                            ? "text-indigo-400 hover:text-indigo-300"
-                            : "text-indigo-600 hover:text-indigo-800"
-                        }`}
-                      >
-                        <FaEdit />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteRole(role.id)}
-                        className={`transition duration-200 ${
-                          darkMode
-                            ? "text-red-400 hover:text-red-300"
-                            : "text-red-600 hover:text-red-800"
-                        }`}
-                      >
-                        <FaTrashAlt />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {roles.length==0 ? (
+                  <tr>
+                  <td colSpan="4" className="text-center py-6 text-sm sm:text-base font-semibold text-gray-500">
+                    No Roles Available
+                  </td>
+                </tr>
+                ) : (
+                  roles.map((role) => (
+                    <tr
+                      key={role.id}
+                      className={`transition duration-200 ${
+                        darkMode
+                          ? "hover:bg-gray-700 border-b border-gray-600"
+                          : "hover:bg-gray-50 border-b-4 border-gray-50"
+                      }`}
+                    >
+                      <td className="px-3 sm:px-6 py-4">{role.role}</td>
+                      <td className="px-3 sm:px-6 py-4">{role.permissions}</td>
+                      <td className="px-3 sm:px-6 py-4 flex space-x-4">
+                        <button
+                          onClick={() => handleEditRole(role)}
+                          className={`transition duration-200 ${
+                            darkMode
+                              ? "text-indigo-400 hover:text-indigo-300"
+                              : "text-indigo-600 hover:text-indigo-800"
+                          }`}
+                        >
+                          <FaEdit />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteRole(role.id)}
+                          className={`transition duration-200 ${
+                            darkMode
+                              ? "text-red-400 hover:text-red-300"
+                              : "text-red-600 hover:text-red-800"
+                          }`}
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+                
               </tbody>
             </table>
           </div>

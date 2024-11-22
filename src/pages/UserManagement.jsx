@@ -28,23 +28,11 @@ ChartJS.register(
   ArcElement 
 );
 
-
-ChartJS.register(
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Title,
-  Tooltip,
-  Legend
-);
-
 function UserManagement() {
   const users = useSelector((state) => state.users.users); 
   const dispatch = useDispatch(); 
   const [modalOpen, setModalOpen] = useState(false);
   const { darkMode } = useDarkMode();
-
 
   const handleDeleteUser = (id) => {
     dispatch(deleteUser(id));
@@ -80,12 +68,24 @@ function UserManagement() {
       },
     ],
   };
+
   const doughnutData = {
     labels: Object.keys(roles),
     datasets: [
       {
         data: Object.values(roles),
         backgroundColor: ["rgb(37, 99, 235)", "rgb(255, 99, 132)"],
+      },
+    ],
+  };
+
+  // Add a placeholder logo and message if no users are present
+  const placeholderDoughnutData = {
+    labels: ["No Users"],
+    datasets: [
+      {
+        data: [1],
+        backgroundColor: ["rgb(200, 200, 200)"], // Light grey color for empty
       },
     ],
   };
@@ -119,7 +119,7 @@ function UserManagement() {
               <h3 className="text-lg font-semibold mb-4">User Roles Distribution</h3>
               <div className="w-full flex justify-center">
               <div style={{ width: "70%", height: "70%" }}>
-                <Doughnut data={doughnutData} options={{ responsive: true }} />
+                <Doughnut data={users.length === 0 ? placeholderDoughnutData : doughnutData} options={{ responsive: true }} />
               </div>
               </div>
             </div>
@@ -136,25 +136,33 @@ function UserManagement() {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user) => (
-                  <tr key={user.id} className={`transition duration-200 ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
-                    <td className="px-2 sm:px-6 py-4">{user.name}</td>
-                    <td className="px-2 sm:px-6 py-4">{user.role}</td>
-                    <td className="px-2 sm:px-6 py-4">
-                      <button
-                        onClick={() => handleStatusChange(user.id, user.status === "Active" ? "Inactive" : "Active")}
-                        className={`text-sm px-3 py-1 rounded-full ${user.status === "active" ? "bg-green-500" : "bg-red-500"} text-white`}
-                      >
-                        {user.status}
-                      </button>
-                    </td>
-                    <td className="px-2 sm:px-6 py-4">
-                      <button onClick={() => handleDeleteUser(user.id)} className="text-red-600 hover:text-red-800 transition">
-                        <FaTrashAlt />
-                      </button>
+                {users.length === 0 ? (
+                  <tr>
+                    <td colSpan="4" className="text-center py-6 text-sm sm:text-base font-semibold text-gray-500">
+                      No Users Available
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  users.map((user) => (
+                    <tr key={user.id} className={`transition duration-200 ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
+                      <td className="px-2 sm:px-6 py-4">{user.name}</td>
+                      <td className="px-2 sm:px-6 py-4">{user.role}</td>
+                      <td className="px-2 sm:px-6 py-4">
+                        <button
+                          onClick={() => handleStatusChange(user.id, user.status === "Active" ? "Inactive" : "Active")}
+                          className={`text-sm px-3 py-1 rounded-full ${user.status === "active" ? "bg-green-500" : "bg-red-500"} text-white`}
+                        >
+                          {user.status}
+                        </button>
+                      </td>
+                      <td className="px-2 sm:px-6 py-4">
+                        <button onClick={() => handleDeleteUser(user.id)} className="text-red-600 hover:text-red-800 transition">
+                          <FaTrashAlt />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
