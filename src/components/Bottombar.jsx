@@ -13,7 +13,6 @@ const BottomSidebar = ({ className }) => {
       } w-full p-3 h-auto fixed bottom-0 left-0 z-10 shadow-2xl border-t-[1px] transition-colors duration-300 ${className}`}
     >
       <ul className="flex justify-around">
-        {/* Dashboard Icon */}
         <li>
           <Link
             to="/dashboard"
@@ -22,8 +21,6 @@ const BottomSidebar = ({ className }) => {
             <FaTachometerAlt className="text-xl" />
           </Link>
         </li>
-
-        {/* User Management Icon */}
         <li>
           <Link
             to="/user-management"
@@ -32,8 +29,6 @@ const BottomSidebar = ({ className }) => {
             <FaUsers className="text-xl" />
           </Link>
         </li>
-
-        {/* Role Management Icon */}
         <li>
           <Link
             to="/role-management"

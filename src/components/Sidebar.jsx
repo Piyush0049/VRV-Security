@@ -11,7 +11,6 @@ const Sidebar = ({ className }) => {
       className={`${darkMode ? "bg-gray-800 text-gray-300 border-gray-600" : "bg-gray-100 text-gray-700 border-gray-200"} w-1/6 p-5 h-screen fixed top-5 lg:left-16 left-0 z-10 shadow-xl pt-[7%] border-r-[1px] transition-colors duration-300 ${className}`}
     >
       <ul className="space-y-6">
-        {/* Dashboard Link */}
         <li>
           <Link
             to="/dashboard"
@@ -21,8 +20,6 @@ const Sidebar = ({ className }) => {
             Dashboard
           </Link>
         </li>
-
-        {/* User Management Link */}
         <li>
           <Link
             to="/user-management"
@@ -32,8 +29,6 @@ const Sidebar = ({ className }) => {
             All Users
           </Link>
         </li>
-
-        {/* Role Management Link */}
         <li>
           <Link
             to="/role-management"

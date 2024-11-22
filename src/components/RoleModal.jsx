@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaUserPlus, FaRegTimesCircle } from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
-import { addRole } from "../slices/Roleslice"; // Import the action
+import { addRole } from "../slices/Roleslice";
 import { useDispatch } from "react-redux";
 
 function Modal({ closeModal }) {
@@ -17,7 +17,7 @@ function Modal({ closeModal }) {
         role,
         permissions,
       };
-      dispatch(addRole(newRole)); // Dispatch addRole action
+      dispatch(addRole(newRole));
       closeModal();
     } else {
       alert("All fields are required!");
@@ -35,7 +35,6 @@ function Modal({ closeModal }) {
           darkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-800"
         }`}
       >
-        {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h3
             className={`text-2xl font-semibold flex items-center ${
@@ -60,8 +59,6 @@ function Modal({ closeModal }) {
             <FaRegTimesCircle size={24} />
           </button>
         </div>
-
-        {/* Input Fields */}
         <input
           type="text"
           placeholder="Role"
@@ -84,8 +81,6 @@ function Modal({ closeModal }) {
               : "bg-white text-gray-800 border-gray-300 focus:ring-indigo-500"
           }`}
         />
-
-        {/* Action Buttons */}
         <div className="flex justify-end space-x-4">
           <button
             onClick={closeModal}

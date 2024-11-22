@@ -4,7 +4,7 @@ import Modal from "../components/UserModal";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteUser, updateUserStatus } from '../slices/Userslice';
 import { Line, Doughnut } from "react-chartjs-2";
-import { useDarkMode } from "../context/DarkModeContext"; // Import Dark Mode Context
+import { useDarkMode } from "../context/DarkModeContext";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -17,7 +17,6 @@ import {
   ArcElement,
 } from 'chart.js';
 
-// Registering chart elements
 ChartJS.register(
   LineElement,
   PointElement,
@@ -26,11 +25,10 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement  // For Doughnut chart
+  ArcElement 
 );
 
 
-// Registering chart elements
 ChartJS.register(
   LineElement,
   PointElement,
@@ -42,10 +40,10 @@ ChartJS.register(
 );
 
 function UserManagement() {
-  const users = useSelector((state) => state.users.users); // Access users from Redux store
-  const dispatch = useDispatch(); // To dispatch actions
+  const users = useSelector((state) => state.users.users); 
+  const dispatch = useDispatch(); 
   const [modalOpen, setModalOpen] = useState(false);
-  const { darkMode, toggleDarkMode } = useDarkMode(); // Consume dark mode context
+  const { darkMode } = useDarkMode();
 
 
   const handleDeleteUser = (id) => {
@@ -56,16 +54,11 @@ function UserManagement() {
     dispatch(updateUserStatus({ id, status }));
   };
 
-  // Calculate user statistics
-  const activeUsers = users.filter((user) => user.status === "active").length;
-  const inactiveUsers = users.filter((user) => user.status === "inactive").length;
-
   const roles = users.reduce((acc, user) => {
     acc[user.role] = (acc[user.role] || 0) + 1;
     return acc;
   }, {});
 
-  // Data for Line chart (User activity trend)
   const lineData = {
     labels: ["January", "February", "March", "April", "May"],
     datasets: [
@@ -87,23 +80,19 @@ function UserManagement() {
       },
     ],
   };
-
-  // Data for Doughnut chart (User roles distribution)
   const doughnutData = {
     labels: Object.keys(roles),
     datasets: [
       {
         data: Object.values(roles),
-        backgroundColor: ["rgb(37, 99, 235)", "rgb(255, 99, 132)"], // Blue for Admin, Red for User
+        backgroundColor: ["rgb(37, 99, 235)", "rgb(255, 99, 132)"],
       },
     ],
   };
 
   return (
-    <div className={`${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-800"} h-screen flex pt-16 overflow-auto justify-end w-full md:w-5/6`}>
-      {/* Main Content */}
+    <div className={`${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-800"} h-screen flex pt-16 overflow-auto justify-end w-full md:w-5/6`}>+
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
         <header
           className={`h-16 flex items-center px-6 justify-between shadow-md ${darkMode ? "bg-gray-900 text-gray-200" : "bg-gray-100 text-gray-800"
             }`}
@@ -120,17 +109,12 @@ function UserManagement() {
           </div>
         </header>
 
-        {/* Content */}
         <main className="px-3 md:px-6 py-6 flex-1 overflow-y-auto">
-          {/* Graphs Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            {/* Line Chart: User Activity Trend */}
             <div className={`${darkMode ? "bg-gray-900" : "bg-white"} p-6 rounded-lg shadow-sm`}>
               <h3 className="text-lg font-semibold mb-4">User Activity Trend</h3>
               <Line data={lineData} options={{ responsive: true }} />
             </div>
-
-            {/* Doughnut Chart: User Roles Distribution */}
             <div className={`${darkMode ? "bg-gray-900" : "bg-white"} p-6 rounded-lg shadow-sm`}>
               <h3 className="text-lg font-semibold mb-4">User Roles Distribution</h3>
               <div style={{ width: "80%", height: "80%" }}>
@@ -139,7 +123,6 @@ function UserManagement() {
             </div>
           </div>
 
-          {/* Table */}
           <div className={`shadow-sm rounded-lg overflow-hidden ${darkMode ? "bg-gray-800" : "bg-white"}`}>
             <table className="w-full table-auto text-xs sm:text-sm md:text-sm">
               <thead className={`${darkMode ? "bg-gray-800 text-gray-200" : "bg-indigo-100 text-gray-700"}`}>
@@ -173,8 +156,6 @@ function UserManagement() {
               </tbody>
             </table>
           </div>
-
-          {/* Modal */}
           {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
         </main>
       </div>

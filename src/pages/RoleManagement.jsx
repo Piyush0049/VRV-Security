@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { FaPlus, FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
 import { useSelector, useDispatch } from "react-redux";
-import RoleModal from "../components/RoleModal"; // For adding roles
-import EditRoleModal from "../components/EditRoleModal"; // For editing roles
+import RoleModal from "../components/RoleModal";
+import EditRoleModal from "../components/EditRoleModal";
 
 function RoleManagement() {
   const { darkMode } = useDarkMode();
@@ -20,7 +20,7 @@ function RoleManagement() {
 
   const handleDeleteRole = (roleId) => {
     if (window.confirm("Are you sure you want to delete this role?")) {
-      dispatch({ type: "roles/deleteRole", payload: roleId }); // Replace with your delete action
+      dispatch({ type: "roles/deleteRole", payload: roleId });
     }
   };
 
@@ -31,7 +31,6 @@ function RoleManagement() {
       }`}
     >
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
         <header
           className={`h-16 flex items-center px-6 justify-between shadow-md ${
             darkMode ? "bg-gray-900 text-gray-200" : "bg-gray-100 text-gray-800"
@@ -54,8 +53,6 @@ function RoleManagement() {
             </button>
           </div>
         </header>
-
-        {/* Content */}
         <main className="p-6 sm:p-8 flex-1 overflow-y-auto">
           <div
             className={`shadow-sm rounded-lg overflow-hidden ${
@@ -121,8 +118,6 @@ function RoleManagement() {
           </div>
         </main>
       </div>
-
-      {/* Modals */}
       {addModalOpen && <RoleModal closeModal={() => setAddModalOpen(false)} />}
       {editModalOpen && (
         <EditRoleModal

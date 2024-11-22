@@ -1,9 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 
-// Create DarkModeContext
 const DarkModeContext = createContext();
 
-// Custom hook to use DarkModeContext
 export const useDarkMode = () => useContext(DarkModeContext);
 
 export const DarkModeProvider = ({ children }) => {

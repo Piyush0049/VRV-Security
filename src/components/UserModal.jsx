@@ -8,13 +8,13 @@ function Modal({ closeModal }) {
   const dispatch = useDispatch();
   const { darkMode } = useDarkMode();
   const [name, setName] = useState("");
-  const [role, setRole] = useState("user"); // Default value for role
-  const [status, setStatus] = useState("active"); // Default value for status
+  const [role, setRole] = useState("user");
+  const [status, setStatus] = useState("active"); 
 
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -24,7 +24,7 @@ function Modal({ closeModal }) {
     if (name && role && status) {
       const newUser = { id: Date.now(), name, role, status, created : formatDate(Date.now()) };
       dispatch(addUser(newUser));
-      closeModal(); // Close modal after saving
+      closeModal();
     } else {
       alert("All fields are required!");
     }
@@ -41,7 +41,6 @@ function Modal({ closeModal }) {
           darkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-800"
         }`}
       >
-        {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h3
             className={`text-2xl font-semibold flex items-center ${
@@ -62,8 +61,6 @@ function Modal({ closeModal }) {
             <FaRegTimesCircle size={24} />
           </button>
         </div>
-
-        {/* Input Fields */}
         <input
           type="text"
           placeholder="Name"
@@ -99,8 +96,6 @@ function Modal({ closeModal }) {
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </select>
-
-        {/* Action Buttons */}
         <div className="flex justify-end space-x-4">
           <button
             onClick={closeModal}

@@ -9,16 +9,15 @@ import {
   Legend
 } from 'chart.js';
 import { Bar, Line } from "react-chartjs-2";
-import { FaSearch, FaUserPlus, FaEllipsisH, FaMoon, FaSun } from "react-icons/fa"; // Import necessary icons for dark mode
-import { useDarkMode } from "../context/DarkModeContext"; // Import dark mode hook
+import { FaEllipsisH} from "react-icons/fa";
+import { useDarkMode } from "../context/DarkModeContext";
 import { useSelector } from "react-redux";
 
-// Register necessary Chart.js components
 ChartJS.register(Title, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
 const Dashboard = () => {
   const { users } = useSelector((state) => state.users);
-  const { darkMode, toggleDarkMode } = useDarkMode(); // Use dark mode context
+  const { darkMode } = useDarkMode();
 
   const lineData = {
     labels: ["January", "February", "March", "April"],
@@ -82,9 +81,7 @@ const Dashboard = () => {
       className={`h-screen flex pt-16 overflow-auto justify-end w-full lg:w-5/6 ${darkMode ? "bg-gray-800 text-gray-200" : " text-gray-900"
         }`}
     >
-      {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
         <header
           className={`h-16 flex items-center px-4 sm:px-6 md:px-8 justify-between ${darkMode ? "bg-gray-900 shadow-sm text-gray-200" : "bg-gray-50 shadow-sm text-gray-600"
             }`}
@@ -92,9 +89,7 @@ const Dashboard = () => {
           <h1 className="text-lg sm:text-xl md:text-xl font-semibold">Dashboard</h1>
         </header>
 
-        {/* Content */}
         <main className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto">
-          {/* Graphs Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div
               className={`p-4 sm:p-6 rounded-lg shadow-sm ${darkMode ? "bg-gray-700 text-gray-200" : "bg-white text-gray-600"
@@ -108,12 +103,9 @@ const Dashboard = () => {
                 }`}
             >
               <h3 className="text-lg sm:text-lg font-semibold mb-3 sm:mb-4">Active Users</h3>
-              {/* Line chart for Active Users */}
               <Line data={lineData} options={options} />
             </div>
           </div>
-
-          {/* Table */}
           <div
             className={`shadow-sm rounded-lg overflow-hidden ${darkMode ? "bg-gray-800" : "bg-white"
               }`}
@@ -132,7 +124,6 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* Table Rows */}
                 {users.map((user=>(
                   <tr className={`transition duration-200 ${darkMode
                     ? "hover:bg-gray-700 border-b border-gray-600"
@@ -149,8 +140,6 @@ const Dashboard = () => {
                   </td>
                 </tr>
                 )))}
-                
-                {/* Add more rows */}
               </tbody>
             </table>
           </div>

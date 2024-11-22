@@ -9,15 +9,15 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     addUser: (state, action) => {
-      state.users.push(action.payload); // Adds a new user to the users array
+      state.users.push(action.payload);
     },
     updateUserStatus: (state, action) => {
       const { id, status } = action.payload;
       const user = state.users.find(user => user.id === id);
-      if (user) user.status = status; // Update the status of a user
+      if (user) user.status = status;
     },
     deleteUser: (state, action) => {
-      state.users = state.users.filter(user => user.id !== action.payload); // Removes a user by ID
+      state.users = state.users.filter(user => user.id !== action.payload);
     },
   },
 });
