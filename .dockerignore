@@ -1,0 +1,38 @@
+# Node.js dependencies
+node_modules
+
+# Build output
+build
+dist
+
+# Logs
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Dependency directories
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# React build cache
+.cache
+*.tgz
+
+# Docker-related files
+.dockerignore
+Dockerfile
+
+# Git files
+.git
+.gitignore
+
+# IDE files
+.vscode
+.idea
+
+# Environment files
+.env

@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="bg-gray-100 dark:bg-gray-800 py-4 px-4 md:px-8 shadow-md text-gray-700 dark:text-gray-300 fixed top-0 left-0 right-0 lg:left-16 lg:right-16 z-20 border-b-[1px] border-gray-200 dark:border-gray-600">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl lg:text-2xl font-semibold text-gray-700 dark:text-gray-100">VRV Security</h1>
+        <h1 className="text-xl lg:text-2xl font-semibold text-gray-700 dark:text-gray-100">My Project</h1>
         <div className="flex items-center lg:space-x-6">
           <button
             onClick={toggleDarkMode}
