@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaUserEdit, FaTrashAlt, FaUserPlus } from "react-icons/fa";
+import { FaTrashAlt, FaUserPlus } from "react-icons/fa";
 import Modal from "../components/UserModal";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteUser, updateUserStatus } from '../slices/Userslice';
